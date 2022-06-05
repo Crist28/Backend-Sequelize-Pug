@@ -1,5 +1,5 @@
 'use strict'
-const Proyectos = require('../models/Proyectos')
+const Proyectos = require('../models/Proyectos');
 
 exports.proyectosHome = async(req, res) => {
     const proyectos = await Proyectos.findAll();
@@ -35,9 +35,8 @@ exports.nuevoProyecto = async(req, res) => {
     }else{
         //no hay errores
         //Insertar en la base de datos
-        Proyectos.create({ nombre })
-            .then(()=> console.log('Insertado correctamente'))
-            .catch(error => console.log(error));
+        const proyecto = await Proyectos.create({ nombre });
+        res.redirect('/');
     }
 }
 
